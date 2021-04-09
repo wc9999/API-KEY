@@ -1,0 +1,13 @@
+step 1 :
+export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value core/project)
+
+step 2 :
+gcloud iam service-accounts create my-natlang-sa \
+  --display-name "my natural language service account"
+
+step 3 : 
+gcloud iam service-accounts keys create ~/key.json \
+  --iam-account my-natlang-sa@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com
+
+step 4 : 
+export GOOGLE_APPLICATION_CREDENTIALS="/home/USER/key.json"
